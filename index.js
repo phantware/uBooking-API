@@ -1,6 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import authRoute from './routes/auth.js'
+import authUsers from './routes/users.js'
+import authHotels from './routes/hotels.js'
+import authRooms from './routes/rooms.js'
 
 const app = express()
 dotenv.config()
@@ -16,6 +20,11 @@ const connect = async () => {
 mongoose.connection.on('disconnected', () => {
   console.log('mongoDB disconnected!')
 })
+
+app.use('/api/auth', authRoute)
+app.use('/api/users', authUsers)
+app.use('/api/hotels', authHotels)
+app.use('/api/room', authRooms)
 
 app.get('/', (req, res) => {
   return res.status(200).json({ msg: 'You are welcome to Ubooking API' })
