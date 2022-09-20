@@ -31,7 +31,7 @@ router.put('/:id', async (req, res) => {
 })
 
 //DELETE
-router.put('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     await Hotel.findByIdAndDelete(req.params.id)
     return res.status(200).json('Hotel has been deleted')
@@ -41,10 +41,15 @@ router.put('/:id', async (req, res) => {
 })
 
 //GET
-//GET ALL
-
-router.get('/', (req, res) => {
-  return res.status(200).json({ msg: 'This is our auth path' })
+router.get('/:id', (req, res) => {
+  const hotel = Hotel.findById(req.params.id)
+  try {
+    return res.status(200).json(hotel)
+  } catch (err) {
+    return res.status(500).json(err)
+  }
 })
+
+//GET ALL
 
 export default router
