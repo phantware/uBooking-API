@@ -51,5 +51,12 @@ router.get('/:id', (req, res) => {
 })
 
 //GET ALL
-
+router.get('/', (req, res) => {
+  const hotels = Hotel.find()
+  try {
+    return res.status(200).json(hotels)
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+})
 export default router
