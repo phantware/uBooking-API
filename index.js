@@ -21,6 +21,8 @@ mongoose.connection.on('disconnected', () => {
   console.log('mongoDB disconnected!')
 })
 
+// Middleware
+app.use(express.json())
 app.use('/api/auth', authRoute)
 app.use('/api/users', authUsers)
 app.use('/api/hotels', authHotels)

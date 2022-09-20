@@ -24,13 +24,15 @@ const HotelSchema = mongoose.Schema({
   photos: {
     type: [String],
   },
+  title: {
+    type: String,
+  },
   desc: {
     type: String,
     required: true,
   },
   rating: {
     type: Number,
-    required: true,
     min: 0,
     max: 5,
   },
@@ -48,4 +50,4 @@ const HotelSchema = mongoose.Schema({
   },
 })
 
-export default mongoose.model('Hotels', HotelSchema)
+export default mongoose.model('Hotel', HotelSchema)
