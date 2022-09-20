@@ -34,5 +34,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   connect()
-  console.log('Connected to backend.')
+  console.log(`App running at port ${PORT}`)
 })
