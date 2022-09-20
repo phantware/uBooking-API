@@ -13,10 +13,14 @@ const connect = async () => {
     throw error
   }
 }
-
 mongoose.connection.on('disconnected', () => {
   console.log('mongoDB disconnected!')
 })
+
+app.get('/', (req, res) => {
+  return res.status(200).json({ msg: 'You are welcome to Ubooking API' })
+})
+
 app.listen(PORT, () => {
   connect()
   console.log('Connected to backend.')
