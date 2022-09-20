@@ -41,22 +41,22 @@ router.delete('/:id', async (req, res) => {
 })
 
 //GET
-router.get('/:id', async (req, res) => {
-  const hotel = await Hotel.findById(req.params.id)
+router.get('/:id', async (req, res, next) => {
   try {
+    const hotel = await Hotel.findById(req.params.id)
     return res.status(200).json(hotel)
   } catch (err) {
-    return res.status(500).json(err)
+    next(err)
   }
 })
 
 //GET ALL
-router.get('/', async (req, res) => {
-  const hotels = await Hotel.find()
+router.get('/', async (req, res, next) => {
   try {
+    const hotels = await Hotel.find()
     return res.status(200).json(hotels)
   } catch (err) {
-    return res.status(500).json(err)
+    next(err)
   }
 })
 export default router

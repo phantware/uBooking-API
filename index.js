@@ -28,6 +28,17 @@ app.use('/api/users', authUsers)
 app.use('/api/hotels', authHotels)
 app.use('/api/room', authRooms)
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500
+  const errorMessage = err.status || 'Something went wrong'
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  })
+})
+
 app.get('/', (req, res) => {
   return res.status(200).json({ msg: 'You are welcome to Ubooking API' })
 })
