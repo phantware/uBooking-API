@@ -41,8 +41,8 @@ router.delete('/:id', async (req, res) => {
 })
 
 //GET
-router.get('/:id', (req, res) => {
-  const hotel = Hotel.findById(req.params.id)
+router.get('/:id', async (req, res) => {
+  const hotel = await Hotel.findById(req.params.id)
   try {
     return res.status(200).json(hotel)
   } catch (err) {
@@ -51,8 +51,8 @@ router.get('/:id', (req, res) => {
 })
 
 //GET ALL
-router.get('/', (req, res) => {
-  const hotels = Hotel.find()
+router.get('/', async (req, res) => {
+  const hotels = await Hotel.find()
   try {
     return res.status(200).json(hotels)
   } catch (err) {
