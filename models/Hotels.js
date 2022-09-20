@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-const { Schema } = 'mongoose'
 
 const HotelSchema = mongoose.Schema({
   name: {
@@ -49,4 +48,4 @@ const HotelSchema = mongoose.Schema({
   },
 })
 
-export default HotelSchema
+export default mongoose.model('Hotels', HotelSchema)
