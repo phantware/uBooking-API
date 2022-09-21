@@ -1,5 +1,5 @@
 import express from 'express'
-import { creatHotel } from '../controllers/hotel.js'
+import { creatHotel, updateHotel } from '../controllers/hotel.js'
 import Hotel from '../models/Hotel.js'
 import { createError } from '../utils/error.js'
 
@@ -9,20 +9,7 @@ const router = express.Router()
 router.post('/', creatHotel)
 
 //UPDATE
-router.put('/:id', async (req, res) => {
-  try {
-    const updateHotel = await Hotel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    )
-    return res.status(200).json(updateHotel)
-  } catch (err) {
-    return res.status(500).json(err)
-  }
-})
+router.put('/:id', updateHotel)
 
 //DELETE
 router.delete('/:id', async (req, res) => {
