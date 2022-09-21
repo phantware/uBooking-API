@@ -1,5 +1,5 @@
 import express from 'express'
-import { creatHotel, updateHotel } from '../controllers/hotel.js'
+import { creatHotel, deleteHotel, updateHotel } from '../controllers/hotel.js'
 import Hotel from '../models/Hotel.js'
 import { createError } from '../utils/error.js'
 
@@ -12,14 +12,7 @@ router.post('/', creatHotel)
 router.put('/:id', updateHotel)
 
 //DELETE
-router.delete('/:id', async (req, res) => {
-  try {
-    await Hotel.findByIdAndDelete(req.params.id)
-    return res.status(200).json('Hotel has been deleted')
-  } catch (err) {
-    return res.status(500).json(err)
-  }
-})
+router.delete('/:id', deleteHotel)
 
 //GET
 router.get('/:id', async (req, res, next) => {

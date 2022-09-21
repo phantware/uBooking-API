@@ -22,3 +22,12 @@ export const updateHotel = async (req, res, next) => {
     next(err)
   }
 }
+
+export const deleteHotel = async (req, res, next) => {
+  try {
+    await Hotel.findByIdAndDelete(req.params.id)
+    return res.status(200).json('Hotel has been deleted')
+  } catch (err) {
+    next()
+  }
+}
