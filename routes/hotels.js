@@ -2,6 +2,7 @@ import express from 'express'
 import {
   creatHotel,
   deleteHotel,
+  getAllHotels,
   getHotel,
   updateHotel,
 } from '../controllers/hotel.js'
@@ -23,12 +24,5 @@ router.delete('/:id', deleteHotel)
 router.get('/:id', getHotel)
 
 //GET ALL
-router.get('/', async (req, res, next) => {
-  try {
-    const hotels = await Hotel.find()
-    return res.status(200).json(hotels)
-  } catch (err) {
-    next(err)
-  }
-})
+router.get('/', getAllHotels)
 export default router
