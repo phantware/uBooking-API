@@ -5,8 +5,7 @@ import {
   getAllHotels,
   getHotel,
   updateHotel,
-} from '../controllers/hotel.js'
-import Hotel from '../models/Hotel.js'
+} from '../controllers/hotelController.js'
 import { createError } from '../utils/error.js'
 
 const router = express.Router()
