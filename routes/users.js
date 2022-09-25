@@ -1,9 +1,24 @@
 import express from 'express'
 
+import {
+  deleteUser,
+  getAllUsers,
+  getUser,
+  updateUser,
+} from '../controllers/userController.js'
+import { createError } from '../utils/error.js'
+
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  return res.status(200).json({ msg: 'This is our auth path' })
-})
+//UPDATE
+router.put('/:id', updateUser)
 
+//DELETE
+router.delete('/:id', deleteUser)
+
+//GET
+router.get('/:id', getUser)
+
+//GET ALL
+router.get('/', getAllUsers)
 export default router
