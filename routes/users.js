@@ -1,4 +1,5 @@
 import express from 'express'
+import { verifyToken } from '../utils/verifyToken.js'
 
 import {
   deleteUser,
@@ -9,6 +10,10 @@ import {
 import { createError } from '../utils/error.js'
 
 const router = express.Router()
+
+router.get('/:checkAuth', verifyToken, (req, res, next) => {
+  return res.status(200).json('You are logged in')
+})
 
 //UPDATE
 router.put('/:id', updateUser)
