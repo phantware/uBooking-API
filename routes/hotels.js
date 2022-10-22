@@ -7,17 +7,18 @@ import {
   updateHotel,
 } from '../controllers/hotelController.js'
 import { createError } from '../utils/error.js'
+import { verifyAdmin } from '../utils/verifyToken.js'
 
 const router = express.Router()
 
 //CREATE
-router.post('/', creatHotel)
+router.post('/', verifyAdmin, creatHotel)
 
 //UPDATE
-router.put('/:id', updateHotel)
+router.put('/:id', verifyAdmin, updateHotel)
 
 //DELETE
-router.delete('/:id', deleteHotel)
+router.delete('/:id', verifyAdmin, deleteHotel)
 
 //GET
 router.get('/:id', getHotel)
