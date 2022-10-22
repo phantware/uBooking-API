@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  creatHotel,
+  createHotel,
   deleteHotel,
   getAllHotels,
   getHotel,
@@ -12,7 +12,7 @@ import { verifyAdmin } from '../utils/verifyToken.js'
 const router = express.Router()
 
 //CREATE
-router.post('/', verifyAdmin, creatHotel)
+router.post('/', verifyAdmin, createHotel)
 
 //UPDATE
 router.put('/:id', verifyAdmin, updateHotel)
