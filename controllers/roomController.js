@@ -18,3 +18,45 @@ export const createRoom = async (req, res, next) => {
     next(err)
   }
 }
+
+export const updateRoom = async (req, res, next) => {
+  try {
+    const updateRoom = await Room.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    )
+    return res.status(200).json(updateRoom)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const deleteRoom = async (req, res, next) => {
+  try {
+    await Room.findByIdAndDelete(req.params.id)
+    return res.status(200).json('Room has been deleted')
+  } catch (err) {
+    next()
+  }
+}
+
+export const getRoom = async (req, res, next) => {
+  try {
+    const room = await Room.findById(req.params.id)
+    return res.status(200).json(room)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const getAllRooms = async (req, res, next) => {
+  try {
+    const rooms = await Room.find()
+    return res.status(200).json(rooms)
+  } catch (err) {
+    next(err)
+  }
+}
