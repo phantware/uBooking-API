@@ -28,7 +28,7 @@ app.use(cookieParser())
 app.use('/api/auth', authRoute)
 app.use('/api/users', authUsers)
 app.use('/api/hotels', authHotels)
-app.use('/api/room', authRooms)
+app.use('/api/rooms', authRooms)
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500
