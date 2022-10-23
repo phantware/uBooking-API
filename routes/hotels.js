@@ -2,7 +2,7 @@ import express from 'express'
 import {
   createHotel,
   deleteHotel,
-  getAllHotels,
+  getHotels,
   getHotel,
   updateHotel,
 } from '../controllers/hotelController.js'
@@ -24,5 +24,5 @@ router.delete('/:id', verifyAdmin, deleteHotel)
 router.get('/:id', getHotel)
 
 //GET ALL
-router.get('/', getAllHotels)
+router.get('/', getHotels)
 export default router
