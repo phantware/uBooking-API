@@ -5,6 +5,7 @@ import {
   getHotels,
   getHotel,
   updateHotel,
+  countByCity,
 } from '../controllers/hotelController.js'
 import { createError } from '../utils/error.js'
 import { verifyAdmin } from '../utils/verifyToken.js'
@@ -21,8 +22,11 @@ router.put('/:id', verifyAdmin, updateHotel)
 router.delete('/:id', verifyAdmin, deleteHotel)
 
 //GET
-router.get('/:id', getHotel)
+router.get('/find/:id', getHotel)
 
 //GET ALL
 router.get('/', getHotels)
+router.get('/countByCity', countByCity)
+router.get('/CountByTypes', getHotels)
+
 export default router
