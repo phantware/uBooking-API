@@ -6,6 +6,22 @@ import authUsers from './routes/users.js'
 import authHotels from './routes/hotels.js'
 import authRooms from './routes/rooms.js'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
+
+// const bodyParser = require('body-parser')
+
+const corsOption = {
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+}
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}
 
 const app = express()
 dotenv.config()
@@ -23,6 +39,7 @@ mongoose.connection.on('disconnected', () => {
 })
 
 // Middlewares
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api/auth', authRoute)
