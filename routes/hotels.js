@@ -6,6 +6,7 @@ import {
   getHotel,
   updateHotel,
   countByCity,
+  countByType,
 } from '../controllers/hotelController.js'
 import { createError } from '../utils/error.js'
 import { verifyAdmin } from '../utils/verifyToken.js'
@@ -27,6 +28,6 @@ router.get('/find/:id', getHotel)
 //GET ALL
 router.get('/', getHotels)
 router.get('/countByCity', countByCity)
-router.get('/CountByTypes', getHotels)
+router.get('/countByType', countByType)
 
 export default router
